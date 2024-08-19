@@ -42,7 +42,7 @@ class CI:
                     assert (1/r <= self.I.size()), f"Problem is not feasible" 
         
         self.isfeasible = True
-        
+
         
 
     def allinf(self, dfa: DFA, state: str) -> bool:
@@ -88,7 +88,7 @@ class CI:
     def getImproviser(self) -> Improviser:
         ##INFINITE CASE
         if self.I.size() == math.inf:
-            if self.soft_constraint:
+            if self.soft_constraint and self.epsilon>0:
                 
                 t = [] #List of all transitions in new Improviser
                 intersec = intersection(self.I, self.A)
@@ -127,7 +127,7 @@ class CI:
         
         #FINITE CASE
         else:
-            if self.soft_constraint:
+            if self.soft_constraint and self.epsilon>0:
                 t = [] #List of all transitions in new Improviser
                 intersec = intersection(self.I, self.A)
                 diff = intersection(self.I, complement(self.A))

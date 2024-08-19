@@ -12,4 +12,4 @@ print(
     "number of unique words: ", len(set(sample)), "\n",
     "min length of word generated:", min([len(x) for x in sample])
 )
-print(set(sample))
+print(len([w for w in sample if len(w)%2==1]))
